@@ -1,0 +1,45 @@
+<div class="container">
+  <!-- Main area to enter the withdrawal amount -->
+  <div *ngIf="!printing && !showNotes">
+    <h2>Qual valor deseja sacar?</h2>
+    <input
+      type="text"
+      placeholder="Digite o valor do saque"
+      [(ngModel)]="withdrawAmount"
+      appCurrencyFormat
+    />
+    <button class="btn-primary" (click)="processWithdrawal()">Sacar</button>
+    <button class="btn-secondary" (click)="reset()">Apagar</button>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <!-- Component that simulates printing notes -->
+  <app-printing *ngIf="printing"></app-printing>
+
+  <!-- Main area to show loot -->
+  <div *ngIf="!errorMessage && !printing && noteKeys.length > 0" class="note">
+    <h3>Notas impressas do saque de R${{ withdrawAmount }}:</h3>
+    <div class="note-counts">
+      <div *ngFor="let key of noteKeys">
+        <ng-container *ngFor="let i of [].constructor(noteCounts[key])">
+          <img
+            [src]="getImageForNote(key)"
+            alt="Nota de {{ key }}"
+            class="note-image"
+          />
+        </ng-container>
+      </div>
+    </div>
+    <ul>
+      <li *ngFor="let key of noteKeys">
+        {{ noteCounts[key] }} nota de: R${{ key }},00
+      </li>
+    </ul>
+    <div class="total-notes">
+      <strong>Total de notas: {{ totalNotes }}</strong>
+    </div>
+    <button class="btn-primary" (click)="reset()">Fazer outro saque</button>
+  </div>
+</div>

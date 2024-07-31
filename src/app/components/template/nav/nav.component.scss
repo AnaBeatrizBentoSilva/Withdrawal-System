@@ -1,0 +1,40 @@
+@import "../../../../styles/variables.scss";
+
+.container {
+  display: flex;
+  margin-top: 50px;
+
+  .sidenav {
+    background-color: $primary-color;
+    width: 200px;
+    height: calc(100vh - 50px);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    padding: 30px 20px 0;
+    box-sizing: border-box;
+    color: #fff;
+
+    .nav-item {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 16px;
+
+      span {
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .content {
+    margin-left: 200px;
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #fff;
+    flex: 1;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+}
