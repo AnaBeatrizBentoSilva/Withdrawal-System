@@ -1,0 +1,20 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 200px);
+  left: 200px;
+  border-top: 2px solid #f1f1f1;
+
+  span{
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-block: 20px;
+
+    span {
+      margin-right: 50px;
+    }
+  }
+}

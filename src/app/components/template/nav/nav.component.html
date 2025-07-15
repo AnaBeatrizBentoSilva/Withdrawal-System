@@ -1,15 +1,45 @@
-<div class="container">
-  <div class="sidenav">
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> home </span>
-      Início
-    </a>
-    <a href="/withdraw" class="nav-item" routerLink="/withdraw">
-      <span class="material-symbols-outlined"> attach_money </span>
-      Saque
-    </a>
-  </div>
-  <div class="content">
+<mat-sidenav-container class="container">
+  <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true">
+    <div class="logo-container">
+      <img src="assets/png/logo.png" alt="logo">
+    </div>
+    <div class="nav-list">
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> dashboard </i>
+        Dashboard
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> receipt_long </i>
+        Extrato
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> swap_horiz </i>
+        Transferências
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> credit_card </i>
+        Cartão
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> trending_up </i>
+        Investimentos
+      </a>
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> shield </i>
+        Seguros
+      </a>
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> currency_exchange </i>
+        Câmbio
+      </a>
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> person </i>
+        Meu perfil
+      </a>
+
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
