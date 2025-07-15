@@ -1,48 +1,47 @@
 @import "../../../../styles/variables.scss";
 
 .container {
-  display: flex;
+  height: 100vh;
+}
 
-  .sidenav {
-    background-color: $primary-color;
-    width: 200px;
-    height: 100vh;
-    position: fixed;
-    padding: 30px 20px 0;
+.sidenav {
+  background-color: $primary-color;
+  padding: 30px 20px 0;
 
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 40px;
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
 
-      img {
-        width: 100%;
-      }
+    img {
+      width: 150px;
     }
+  }
 
+  .nav-list {
     .nav-item {
+      cursor: pointer;
+
       display: flex;
       align-items: center;
       color: #fff;
       text-decoration: none;
       margin-bottom: 16px;
 
-      span {
+      i {
         display: flex;
         align-items: center;
         margin-right: 8px;
       }
     }
   }
+}
 
-  .content {
-    margin-left: 200px;
-    margin-top: 20px;
-    padding: 16px;
-    background-color: #fff;
-    flex: 1;
-    height: 100vh;
-    box-sizing: border-box;
-  }
+.content {
+  margin-left: 200px;
+  padding: 16px;
+  background-color: #fff;
+  height: 100vh;
+  box-sizing: border-box;
 }

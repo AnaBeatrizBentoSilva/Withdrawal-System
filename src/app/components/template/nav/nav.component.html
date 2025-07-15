@@ -1,42 +1,45 @@
-<div class="container">
-  <div class="sidenav">
+<mat-sidenav-container class="container">
+  <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true">
     <div class="logo-container">
       <img src="assets/png/logo.png" alt="logo">
     </div>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> dashboard </span>
-      Dashboard
-    </a>
-    <a href="/withdraw" class="nav-item" routerLink="/withdraw">
-      <span class="material-symbols-outlined"> receipt_long </span>
-      Extrato
-    </a>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> swap_horiz </span>
-      Transferências
-    </a>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> credit_card </span>
-      Cartão
-    </a>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> trending_up </span>
-      Investimentos
-    </a>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> shield </span>
-      Seguros
-    </a>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> currency_exchange </span>
-      Câmbio
-    </a>
-    <a href="/" class="nav-item" routerLink="/">
-      <span class="material-symbols-outlined"> person </span>
-      Meu perfil
-    </a>
-  </div>
-  <div class="content">
+    <div class="nav-list">
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> dashboard </i>
+        Dashboard
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> receipt_long </i>
+        Extrato
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> swap_horiz </i>
+        Transferências
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> credit_card </i>
+        Cartão
+      </a>
+      <a class="nav-item" routerLink="/withdraw">
+        <i class="material-symbols-outlined"> trending_up </i>
+        Investimentos
+      </a>
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> shield </i>
+        Seguros
+      </a>
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> currency_exchange </i>
+        Câmbio
+      </a>
+      <a class="nav-item" routerLink="/">
+        <i class="material-symbols-outlined"> person </i>
+        Meu perfil
+      </a>
+
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
