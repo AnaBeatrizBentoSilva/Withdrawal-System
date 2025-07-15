@@ -2,27 +2,35 @@
 
 .container {
   display: flex;
-  margin-top: 50px;
 
   .sidenav {
     background-color: $primary-color;
     width: 200px;
-    height: calc(100vh - 50px);
+    height: 100vh;
     position: fixed;
-    top: 70px;
-    left: 0;
     padding: 30px 20px 0;
-    box-sizing: border-box;
-    color: #fff;
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+
+      img {
+        width: 100%;
+      }
+    }
 
     .nav-item {
-      display: block;
+      display: flex;
+      align-items: center;
       color: #fff;
       text-decoration: none;
       margin-bottom: 16px;
 
       span {
-        vertical-align: middle;
+        display: flex;
+        align-items: center;
         margin-right: 8px;
       }
     }
