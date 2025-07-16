@@ -1,9 +1,5 @@
 @import "../../../../styles/variables.scss";
 
-.container {
-  height: 100vh;
-}
-
 .sidenav {
   background-color: $primary-color;
   padding: 30px 20px 0;
@@ -36,12 +32,4 @@
       }
     }
   }
-}
-
-.content {
-  margin-left: 200px;
-  padding: 16px;
-  background-color: #fff;
-  height: 100vh;
-  box-sizing: border-box;
 }

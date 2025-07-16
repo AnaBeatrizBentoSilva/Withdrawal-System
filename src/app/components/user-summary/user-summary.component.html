@@ -1,0 +1,24 @@
+<div class="user-summary">
+  <div>
+    <p>
+      Olá, <strong>{{ userName }}</strong>
+    </p>
+  </div>
+  <div class="balance">
+    <span>Saldo disponível:</span>
+    <strong>
+      <ng-container *ngIf="showSaldo; else oculto">
+      R$ {{ saldo | number : "1.2-2" }}
+    </ng-container>
+    <ng-template #oculto>
+      <span class="blurred-box"></span>
+    </ng-template>
+    </strong>
+
+    <button (click)="toggleSaldo()" class="eye-button" aria-label="Alternar visibilidade do saldo">
+      <i class="material-symbols-outlined">
+        {{ showSaldo ? 'visibility' : 'visibility_off' }}
+      </i>
+    </button>
+  </div>
+</div>
