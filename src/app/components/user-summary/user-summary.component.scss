@@ -1,0 +1,50 @@
+@import "../../../styles/variables.scss";
+
+.user-summary{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $primary-color;
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+
+  .balance{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+
+    strong{
+      display: flex;
+      align-items: center;
+      margin-left: 0.5rem;
+    }
+
+    .blurred-box{
+      width: 120px;
+      height: 24px;
+      background-color: #e4e7ec;
+      border: 4px;
+    }
+
+    .eye-button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+
+      i{
+        font-size: 1.5rem;
+        color: $primary-color;
+        opacity: 0.8;
+
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
