@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.insurance-container {
+  color: $primary-color;
+
+  h2{
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+}
+
+.insurance-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
