@@ -1,0 +1,42 @@
+@import "../../../styles/variables.scss";
+
+.statement-container {
+  color: $primary-color;
+
+  h2{
+    font-size: 1.8rem;
+  }
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem ;
+}
+
+.info {
+  .date {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .desc {
+    font-weight: bold;
+    margin: 0.2rem 0 0;
+  }
+}
+
+.amount {
+  font-weight: bold;
+
+  &.positive {
+    color: green;
+  }
+
+  &.negative {
+    color: red;
+  }
+}

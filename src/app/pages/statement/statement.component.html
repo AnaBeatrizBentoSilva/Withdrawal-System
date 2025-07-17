@@ -1,0 +1,17 @@
+<section class="statement-container">
+  <h2>Extrato</h2>
+  <div class="transaction" *ngFor="let transaction of transactions">
+    <div class="info">
+      <p class="desc">{{ transaction.description }}</p>
+      <p class="date">{{ transaction.date | date: 'dd/MM/yyyy' }}</p>
+    </div>
+    <p
+      class="amount"
+      [ngClass]="{
+        positive: transaction.amount > 0,
+        negative: transaction.amount < 0
+      }">
+        {{ transaction.amount | currency: 'BRL': 'symbol' }}
+      </p>
+  </div>
+</section>
