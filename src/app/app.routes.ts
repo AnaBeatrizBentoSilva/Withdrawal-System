@@ -4,6 +4,7 @@ import { WithdrawComponent } from './pages/withdraw/withdraw.component';
 import { PrintingComponent } from './components/printing/printing.component';
 import { StatementComponent } from './pages/statement/statement.component';
 import { InsuranceComponent } from './pages/insurance/insurance.component';
+import { InvestmentComponent } from './pages/investment/investment.component';
 
 export const routes: Routes = [
     {
@@ -21,5 +22,9 @@ export const routes: Routes = [
     {
       path: "insurance",
       component: InsuranceComponent
-  }
+    },
+    {
+      path: "investment",
+      component: InvestmentComponent
+    }
 ];
