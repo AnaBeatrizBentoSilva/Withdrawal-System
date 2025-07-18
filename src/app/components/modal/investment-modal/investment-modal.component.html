@@ -1,0 +1,71 @@
+<div class="modal-container">
+  <h1>{{ data.type }}</h1>
+
+  <div *ngIf="data.type === 'Renda fixa'" class="investment-card">
+    <app-investment-card
+      title="CDB Banco XP"
+      value="R$ 2.000"
+      dueDate="30/12/2025"
+    >
+    </app-investment-card>
+
+    <app-investment-card
+      title="CDB Banco do Brasil"
+      value="R$ 1.500"
+      dueDate="10/05/2026"
+    >
+    </app-investment-card>
+
+    <app-investment-card
+      title="CDB Banco Inter"
+      value="R$ 3.000"
+      dueDate="15/08/2026"
+    >
+    </app-investment-card>
+  </div>
+
+  <div *ngIf="data.type === 'Fundos de investimento'" class="investment-card">
+    <app-investment-card
+      title="Fundo Tech Brasil"
+      value="R$ 3.000"
+      yield="12% a.a."
+    >
+    </app-investment-card>
+
+    <app-investment-card
+      title="Fundo Energia Verde"
+      value="R$ 2.500"
+      yield="10% a.a."
+    >
+    </app-investment-card>
+
+    <app-investment-card
+      title="Fundo Verde Futuro"
+      value="R$ 4.000"
+      yield="11% a.a."
+    >
+    </app-investment-card>
+
+    <app-investment-card
+      title="Fundo Inovação Digital"
+      value="R$ 3.500"
+      yield="13% a.a."
+    >
+    </app-investment-card>
+  </div>
+
+  <div *ngIf="data.type === 'Previdência privada'" class="investment-card">
+    <app-investment-card
+      title="BrasilPrev VGBL"
+      value="R$ 3.000"
+      dueDate="2050"
+    >
+    </app-investment-card>
+
+    <app-investment-card
+      title="XP Prev Futura"
+      value="R$ 2.000"
+      dueDate="2045">
+    </app-investment-card>
+  </div>
+</div>

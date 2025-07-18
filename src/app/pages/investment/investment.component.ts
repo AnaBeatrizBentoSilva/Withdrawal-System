@@ -3,12 +3,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { InvestmentModalComponent } from '../../components/modal/investment-modal/investment-modal.component';
 
 @Component({
   selector: 'app-investment',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatTableModule, CommonModule],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, MatTableModule, MatDialogModule, CommonModule, InvestmentModalComponent],
   templateUrl: './investment.component.html',
   styleUrl: './investment.component.scss'
 })
@@ -20,4 +22,13 @@ export class InvestmentComponent {
     { type: 'Fundo X', date: '2024-04-02', value: -8000},
     { type: 'LCI', date: '2024-03-20', value: -5000 },
   ]
+
+  constructor(private dialog: MatDialog) {}
+
+  openModal(type: string): void {
+    this.dialog.open(InvestmentModalComponent, {
+      data: { type },
+      width: '700px'
+    });
+  }
 }

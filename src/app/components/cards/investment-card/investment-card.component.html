@@ -1,0 +1,7 @@
+<div class="card">
+  <h3>{{ title }}</h3>
+  <p><strong>Valor:</strong> {{ value }}</p>
+  <p *ngIf="yield"><strong>Rentabilidade:</strong> {{ yield }}</p>
+  <p *ngIf="dueDate"><strong>Vencimento:</strong> {{ dueDate }}</p>
+  <button mat-raised-button color="primary">Investir</button>
+</div>
