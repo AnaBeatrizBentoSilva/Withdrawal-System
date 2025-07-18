@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InsuranceCardComponent } from '../../components/insurance-card/insurance-card.component';
+import { InsuranceCardComponent } from '../../components/cards/insurance-card/insurance-card.component';
 
 @Component({
   selector: 'app-insurance',
