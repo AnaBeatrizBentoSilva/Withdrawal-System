@@ -1,0 +1,56 @@
+<section class="transfer-container">
+  <h2>Transferência</h2>
+  <form (ngSubmit)="submitTransfer()" class="form-transfer">
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Valor"
+        class="input"
+        [(ngModel)]="transfer.value"
+        name="valor"
+        required
+        mask="separator.2"
+        prefix="R$ "
+        thousandSeparator="."
+        decimalMarker=","
+      />
+      <label [class.active]="transfer.value">Valor</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Beneficiário"
+        class="input"
+        [(ngModel)]="transfer.beneficiary"
+        name="beneficiario"
+        required
+      />
+      <label [class.active]="transfer.beneficiary">Beneficiário</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="CPF/CNPJ"
+        class="input"
+        [(ngModel)]="transfer.cpfCnpj"
+        name="cpfCnpj"
+        required
+        mask="000.000.000-00||00.000.000/0000-00"
+      />
+      <label [class.active]="transfer.cpfCnpj">CPF/CNPJ</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Banco"
+        class="input"
+        [(ngModel)]="transfer.bank"
+        name="banco"
+        required
+      />
+
+      <label [class.active]="transfer.bank">Banco</label>
+    </div>
+    <button type="submit">Transferir</button>
+  </form>
+</section>
