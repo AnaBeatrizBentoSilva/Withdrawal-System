@@ -5,6 +5,7 @@ import { PrintingComponent } from './components/printing/printing.component';
 import { StatementComponent } from './pages/statement/statement.component';
 import { InsuranceComponent } from './pages/insurance/insurance.component';
 import { InvestmentComponent } from './pages/investment/investment.component';
+import { TransferComponent } from './pages/transfer/transfer.component';
 
 export const routes: Routes = [
     {
@@ -26,5 +27,9 @@ export const routes: Routes = [
     {
       path: "investment",
       component: InvestmentComponent
+    },
+    {
+      path: "transfer",
+      component: TransferComponent
     }
 ];
