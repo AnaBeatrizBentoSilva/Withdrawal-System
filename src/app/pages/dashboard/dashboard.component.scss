@@ -1,0 +1,90 @@
+@import "../../../styles/variables.scss";
+
+.dashboard-container {
+  color: $primary-color;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .dashboard-content{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      button {
+        color: white;
+        font-size: 0.8rem;
+        background-color: #2e7c8c;
+        border: none;
+        border-radius: 5px;
+        padding: 1rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .card-statement {
+    border: 1px solid #ebeaea;
+    padding: 2rem;
+    border-radius: 8px;
+    gap: 1rem;
+
+    .statement-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+
+      table,
+      ngx-charts-line-chart {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      table.mat-table {
+        width: 100% !important;
+      }
+
+      ngx-charts-line-chart {
+        width: 100% !important;
+        height: auto;
+      }
+    }
+
+    button {
+      color: white;
+      font-size: 1rem;
+      background-color: #2e7c8c;
+      border: none;
+      border-radius: 10px;
+      width: 12rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    mat-card-title {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .value {
+      font-weight: bold;
+
+      &.positive {
+        color: green;
+      }
+
+      &.negative {
+        color: red;
+      }
+    }
+  }
+}
