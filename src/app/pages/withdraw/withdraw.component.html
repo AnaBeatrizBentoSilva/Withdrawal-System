@@ -1,19 +1,30 @@
-<div class="container">
+<section class="withdraw-container">
+  <h2>Saque</h2>
   <!-- Main area to enter the withdrawal amount -->
+   <div class="form-withdraw">
   <div *ngIf="!printing && !showNotes">
-    <h2>Qual valor deseja sacar?</h2>
-    <input
-      type="text"
-      placeholder="Digite o valor do saque"
-      [(ngModel)]="withdrawAmount"
-      appCurrencyFormat
-    />
-    <button class="btn-primary" (click)="processWithdrawal()">Sacar</button>
-    <button class="btn-secondary" (click)="reset()">Apagar</button>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Valor"
+        class="input"
+        [(ngModel)]="withdrawAmount"
+        name="valor"
+        required
+        mask="separator.2"
+        prefix="R$ "
+        thousandSeparator="."
+        decimalMarker=","
+      />
+      <label [class.active]="withdrawAmount">Valor</label>
+    </div>
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
+    <button type="button" (click)="processWithdrawal()">Sacar</button>
   </div>
+</div>
+
 
   <!-- Component that simulates printing notes -->
   <app-printing *ngIf="printing"></app-printing>
@@ -42,4 +53,4 @@
     </div>
     <button class="btn-primary" (click)="reset()">Fazer outro saque</button>
   </div>
-</div>
+</section>

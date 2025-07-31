@@ -1,62 +1,77 @@
 import { Component } from '@angular/core';
-import { CurrencyFormatDirective } from '../../directives/currencyFormat.directive';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrintingComponent } from '../../components/printing/printing.component';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-withdraw',
   standalone: true,
   imports: [
-    CurrencyFormatDirective,
     FormsModule,
     CommonModule,
     PrintingComponent,
+    NgxMaskDirective
   ],
   templateUrl: './withdraw.component.html',
   styleUrl: './withdraw.component.scss',
 })
 export class WithdrawComponent {
-  // Variables that control the state of the withdrawal component
-  withdrawAmount: number = 0;
+  // Variáveis que controlam o estado do componente
+  withdrawAmount: string = '';
   errorMessage: string = '';
   noteCounts: { [key: number]: number } = {};
   printing: boolean = false;
   showNotes: boolean = false;
 
-  // Method to obtain note keys in numeric format
+  // Getter para obter as chaves das notas (em número)
   get noteKeys(): number[] {
     return Object.keys(this.noteCounts).map((key) => +key);
   }
 
+  // Getter para total de notas
   get totalNotes(): number {
     return Object.values(this.noteCounts).reduce((total, count) => total + count, 0);
   }
 
-  // Method to process the withdrawal
+  // Getter para converter o valor string em número
+  get withdrawAmountNumber(): number {
+    const raw = this.withdrawAmount;
+
+    if (raw === null || raw === undefined) return 0;
+
+    const value = typeof raw === 'string' ? raw : String(raw);
+
+    const numericString = value
+      .replace('R$ ', '')
+      .replace(/\./g, '')
+      .replace(',', '.');
+
+    return parseFloat(numericString) || 0;
+  }
+
+  // Método para processar o saque
   processWithdrawal() {
     const isValid = this.validateWithdrawal();
     if (!isValid) {
       return;
     }
 
-    // Start loading state and hide notes while processing is in progress
     this.printing = true;
     this.showNotes = false;
 
-    // Simulates a 2 second print
+    // Simula a impressão de 2 segundos
     setTimeout(() => {
       this.printing = false;
       this.showNotes = true;
     }, 2000);
   }
 
-  // Method to validate the withdrawal amount
+  // Método para validar o valor de saque
   validateWithdrawal(): boolean {
     this.errorMessage = '';
     this.noteCounts = {};
 
-    //Requirements and restrictions variables
     const notes = [50, 20, 10];
     const minWithdrawal = 10;
     const now = new Date();
@@ -64,7 +79,7 @@ export class WithdrawComponent {
     const currentMinutes = now.getMinutes();
     let maxWithdrawal = 10000;
 
-    // Adjusts maximum withdrawal during the night
+    // Ajusta o saque máximo à noite
     if (
       currentHour >= 22 ||
       currentHour < 6 ||
@@ -73,23 +88,24 @@ export class WithdrawComponent {
       maxWithdrawal = 1000;
     }
 
-    // Requirements and constraints validation checks
-    if (this.withdrawAmount < minWithdrawal) {
+    const amount = this.withdrawAmountNumber;
+
+    if (amount < minWithdrawal) {
       this.errorMessage = '*O valor de saque mínimo é de R$ 10.';
       return false;
-    } else if (this.withdrawAmount % 10 !== 0) {
+    } else if (amount % 10 !== 0) {
       this.errorMessage = '*O valor do saque deve ser múltiplo de 10.';
       return false;
-    } else if (this.withdrawAmount > maxWithdrawal) {
+    } else if (amount > maxWithdrawal) {
       this.errorMessage = `*O valor de saque máximo é de R$ ${maxWithdrawal}.`;
       return false;
     } else {
-      this.calculateNoteCounts(this.withdrawAmount, notes);
+      this.calculateNoteCounts(amount, notes);
       return true;
     }
   }
 
-  // Method to calculate the amount of each note needed for withdrawal
+  // Método para calcular as notas
   calculateNoteCounts(amount: number, notes: number[]) {
     for (const note of notes) {
       const count = Math.floor(amount / note);
@@ -100,7 +116,7 @@ export class WithdrawComponent {
     }
   }
 
-  // Method to get the note image path
+  // Método para retornar o caminho da imagem da nota
   getImageForNote(note: number): string {
     const imagePaths: { [key: number]: string } = {
       50: '../../../assets/svg/fifty-note.svg',
@@ -110,9 +126,9 @@ export class WithdrawComponent {
     return imagePaths[note] || 'assets/images/default-note.png';
   }
 
-  // Method to reset form values
+  // Método para resetar o formulário
   reset() {
-    this.withdrawAmount = 0;
+    this.withdrawAmount = '';
     this.errorMessage = '';
     this.noteCounts = {};
     this.printing = false;
