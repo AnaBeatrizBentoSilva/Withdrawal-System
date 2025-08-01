@@ -7,6 +7,7 @@ import { InsuranceComponent } from './pages/insurance/insurance.component';
 import { InvestmentComponent } from './pages/investment/investment.component';
 import { TransferComponent } from './pages/transfer/transfer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 export const routes: Routes = [
     {
@@ -36,5 +37,9 @@ export const routes: Routes = [
     {
       path: "dashboard",
       component: DashboardComponent
+    },
+    {
+      path: "userProfile",
+      component: UserProfileComponent
     }
 ];
