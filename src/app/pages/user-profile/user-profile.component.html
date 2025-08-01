@@ -1,0 +1,76 @@
+<section class="profile-container">
+  <h2>Meu perfil</h2>
+  <form #form="ngForm" (ngSubmit)="submitTransfer()" class="form-profile">
+    <div class="floating-label">
+      <input
+        type="text"
+        id="NameUser"
+        class="input"
+        [(ngModel)]="userProfile.nameUser"
+        name="nameUser"
+        disabled
+      />
+      <label [class.active]="userProfile.nameUser">Nome</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="CPF/CNPJ"
+        class="input"
+        [(ngModel)]="userProfile.cpfCnpj"
+        name="cpfCnpj"
+        disabled
+        mask="000.000.000-00||00.000.000/0000-00"
+      />
+      <label [class.active]="userProfile.cpfCnpj">CPF/CNPJ</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="email"
+        id="Email"
+        class="input"
+        [(ngModel)]="userProfile.email"
+        name="email"
+        required
+        pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        #email="ngModel"
+      />
+      <label [class.active]="userProfile.email">Email</label>
+      <div *ngIf="(email.invalid && email.touched) || (email.invalid && form.submitted)" class="error-message">
+        <span *ngIf="email.errors?.['required']">*O campo email é obrigatório.</span>
+        <span *ngIf="email.errors?.['email'] || email.errors?.['pattern']">*Formato de email inválido.</span>
+      </div>
+    </div>
+
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Phone"
+        class="input"
+        [(ngModel)]="userProfile.phone"
+        name="phone"
+        required
+        mask="(00) 00000-0000"
+        #phone="ngModel"
+      />
+      <label [class.active]="userProfile.phone">Telefone</label>
+      <div *ngIf="phone.invalid && phone.touched" class="error-message">
+        <span>*O telefone é obrigatório e precisa estar completo.</span>
+      </div>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Address"
+        class="input"
+        [(ngModel)]="userProfile.address"
+        name="address"
+        required
+      />
+
+      <label [class.active]="userProfile.address">Endereço</label>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Atualizar dados</button>
+  </form>
+</section>
