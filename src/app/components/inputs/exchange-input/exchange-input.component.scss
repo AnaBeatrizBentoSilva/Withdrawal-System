@@ -1,0 +1,36 @@
+@import "../../../../styles/variables.scss";
+
+.exchange-input {
+  display: flex;
+  align-items: center;
+
+  app-floating-input {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    ::ng-deep .input {
+      border-right: none;
+      border-radius: 5px 0 0 5px;
+    }
+  }
+
+  .arrow {
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #ebebeb;
+    padding: 0.97rem;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-left: none;
+  }
+
+  .currency-select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 1rem;
+    background-color: white;
+  }
+}
+

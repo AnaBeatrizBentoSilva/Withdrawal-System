@@ -1,0 +1,17 @@
+<div class="floating-label">
+  <input
+    [type]="'text'"
+    class="input"
+    [id]="id || name"
+    [name]="name"
+    [ngModel]="value"
+    (ngModelChange)="valueChange.emit($event)"
+    [required]="required"
+    [disabled]="disabled"
+    [mask]="mask"
+    [prefix]="prefix"
+    [thousandSeparator]="thousandSeparator"
+    [decimalMarker]="decimalMarker"
+  />
+  <label [class.active]="value">{{ placeholder }}</label>
+</div>

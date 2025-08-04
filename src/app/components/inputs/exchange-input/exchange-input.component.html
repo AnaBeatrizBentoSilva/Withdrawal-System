@@ -1,0 +1,25 @@
+<div class="exchange-input">
+  <app-floating-input
+    [(value)]="value"
+    (valueChange)="valueChange.emit($event)"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    name="valor"
+    mask="separator.2"
+    [prefix]="getCurrencyPrefix(currency)"
+    thousandSeparator="."
+    [decimalMarker]="decimalMarker"
+  ></app-floating-input>
+
+  <span class="arrow">→</span>
+
+  <select
+    [ngModel]="currency"
+    (ngModelChange)="currencyChange.emit($event)"
+    class="currency-select"
+  >
+    <option *ngFor="let option of currencies" [value]="option.code">
+      {{ option.label }} {{ option.code }}
+    </option>
+  </select>
+</div>
