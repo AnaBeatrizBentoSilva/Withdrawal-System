@@ -1,0 +1,19 @@
+<section class="exchange-container">
+  <h2>Câmbio</h2>
+  <div class="exchange-inputs">
+    <app-exchange-input
+      [(value)]="fromValue"
+      [(currency)]="fromCurrency"
+      placeholder="Valor"
+    ></app-exchange-input>
+
+    <app-exchange-input
+      [(value)]="toValue"
+      [(currency)]="toCurrency"
+      placeholder="Valor"
+      [disabled]="true"
+    ></app-exchange-input>
+  </div>
+  <button type="submit" (click)="converter()">Converter</button>
+
+</section>
