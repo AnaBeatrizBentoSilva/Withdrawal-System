@@ -1,0 +1,109 @@
+@import "../../../styles/variables.scss";
+
+.card-container {
+  color: $primary-color;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+
+    .card {
+      height: 17rem;
+      width: 27rem;
+      background: linear-gradient(90deg, #16365f 0%, #4572ab 100%);
+      border-radius: 15px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      position: relative;
+
+      .card-info-top {
+        position: relative;
+
+        .icon-chip {
+          position: absolute;
+          top: 2.5rem;
+        }
+
+        .icon-logo {
+          position: absolute;
+          right: 0;
+        }
+      }
+
+      .card-info-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-top: auto;
+
+        h3 {
+          margin: 0;
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+      }
+
+      hr {
+        width: calc(100% + 5rem);
+        margin-left: -2.5rem;
+        height: 4rem;
+        background-color: #000000;
+        border: none;
+        margin-bottom: 1rem;
+      }
+
+      span {
+        font-size: 1.3rem;
+      }
+
+      .field-set {
+        display: flex;
+        gap: 2rem;
+        margin-top: auto;
+
+        .field {
+          display: flex;
+          flex-direction: column;
+
+          .label {
+            font-size: 0.7rem;
+            font-weight: 300;
+          }
+        }
+      }
+      .icon-logo-bottom {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 2.5rem;
+      }
+    }
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
