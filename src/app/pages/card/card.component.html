@@ -1,0 +1,44 @@
+<section class="card-container">
+  <h2>Cartão</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-info-top">
+        <img src="assets/png/icon-chip.png" alt="chip" class="icon-chip" />
+        <img src="assets/png/icon-logo.png" alt="logo" class="icon-logo" />
+      </div>
+      <div class="card-info-bottom">
+        <h3>{{ cardUser.nameUser }}</h3>
+        <img src="assets/png/icon-mastercard.png" alt="icon-mastercard" />
+      </div>
+    </div>
+
+    <div class="card">
+      <hr />
+      <span>{{ cardUser.numberCard }}</span>
+      <div class="field-set">
+        <div class="field">
+          <span class="label">Agência</span>
+          <span class="value">{{ cardUser.agency }}</span>
+        </div>
+        <div class="field">
+          <span class="label">Conta</span>
+          <span class="value">{{ cardUser.account }}</span>
+        </div>
+      </div>
+
+      <div class="field-set">
+        <div class="field">
+          <span class="label">Código</span>
+          <span class="value">{{ cardUser.code }}</span>
+        </div>
+        <div class="field">
+          <span class="label">Validade</span>
+          <span class="value">{{ cardUser.validity }}</span>
+        </div>
+      </div>
+      <img src="assets/png/icon-logo.png" alt="logo" class="icon-logo-bottom" />
+    </div>
+  </div>
+
+  <button type="submit">Bloquear cartão</button>
+</section>

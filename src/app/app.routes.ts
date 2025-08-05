@@ -9,6 +9,7 @@ import { TransferComponent } from './pages/transfer/transfer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
+import { CardComponent } from './pages/card/card.component';
 
 export const routes: Routes = [
     {
@@ -46,5 +47,9 @@ export const routes: Routes = [
     {
       path: "exchange",
       component: ExchangeComponent
+    },
+    {
+      path: "card",
+      component: CardComponent
     }
 ];
