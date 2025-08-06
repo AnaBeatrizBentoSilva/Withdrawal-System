@@ -1,0 +1,33 @@
+<section class="deposit-container">
+  <h2>Depósito</h2>
+
+  <form #form="ngForm" (ngSubmit)="submitTransfer()" class="form-deposit">
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Value"
+        class="input"
+        [(ngModel)]="deposit.value"
+        name="value"
+        required
+        mask="separator.2"
+        prefix="R$ "
+        thousandSeparator="."
+        decimalMarker=","
+      />
+      <label [class.active]="deposit.value">Valor</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Description"
+        class="input"
+        [(ngModel)]="deposit.description"
+        name="description"
+        required
+      />
+      <label [class.active]="deposit.description">Descrição</label>
+    </div>
+    <button type="submit">Depositar</button>
+  </form>
+</section>
