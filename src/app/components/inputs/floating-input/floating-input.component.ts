@@ -8,16 +8,26 @@ import { NgxMaskDirective } from 'ngx-mask';
   standalone: true,
   imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './floating-input.component.html',
-  styleUrl: './floating-input.component.scss'
+  styleUrl: './floating-input.component.scss',
 })
 export class FloatingInputComponent {
+  private _required = false;
+
   @Input() value: string = '';
   @Output() valueChange = new EventEmitter<string>();
 
   @Input() placeholder: string = '';
   @Input() name: string = '';
+  @Input() type: string = 'text';
   @Input() id: string = '';
-  @Input() required: boolean = false;
+  @Input()
+  set required(value: boolean | '') {
+    this._required = value === '' || value === true;
+  }
+
+  get required(): boolean {
+    return this._required;
+  }
   @Input() disabled: boolean = false;
 
   // Máscara (opcional)
