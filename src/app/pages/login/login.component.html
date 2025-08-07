@@ -1,0 +1,29 @@
+<section class="login-container">
+  <div class="login-card">
+    <img src="assets/png/logo.png" alt="logo" />
+    <div class="login-content">
+      <form (ngSubmit)="login()">
+        <app-floating-input
+          [(value)]="email"
+          name="email"
+          placeholder="E-mail"
+          required
+        ></app-floating-input>
+
+        <app-floating-input
+          [(value)]="password"
+          name="password"
+          placeholder="Senha"
+          [type]="'password'"
+          required
+        ></app-floating-input>
+
+        <button type="submit" (click)="login()" >Entrar</button>
+      </form>
+      <div class="login-footer">
+        <span>Não tem uma conta? </span>
+        <a routerLink="/register">Registrar</a>
+      </div>
+    </div>
+  </div>
+</section>

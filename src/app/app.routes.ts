@@ -11,50 +11,27 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { CardComponent } from './pages/card/card.component';
 import { DepositComponent } from './pages/deposit/deposit.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'statement', component: StatementComponent },
+      { path: 'withdraw', component: WithdrawComponent },
+      { path: 'deposit', component: DepositComponent },
+      { path: 'transfer', component: TransferComponent },
+      { path: 'card', component: CardComponent },
+      { path: 'investment', component: InvestmentComponent },
+      { path: 'insurance', component: InsuranceComponent },
+      { path: 'exchange', component: ExchangeComponent },
+      { path: 'userProfile', component: UserProfileComponent },
+    ]
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-  },
-  {
-    path: 'statement',
-    component: StatementComponent,
-  },
-  {
-    path: 'withdraw',
-    component: WithdrawComponent,
-  },
-  {
-    path: 'deposit',
-    component: DepositComponent,
-  },
-  {
-    path: 'transfer',
-    component: TransferComponent,
-  },
-  {
-    path: 'card',
-    component: CardComponent,
-  },
-  {
-    path: 'investment',
-    component: InvestmentComponent,
-  },
-  {
-    path: 'insurance',
-    component: InsuranceComponent,
-  },
-  {
-    path: 'exchange',
-    component: ExchangeComponent,
-  },
-  {
-    path: 'userProfile',
-    component: UserProfileComponent,
-  },
+
+  { path: 'login', component: LoginComponent }
 ];
