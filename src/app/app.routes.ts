@@ -13,11 +13,13 @@ import { CardComponent } from './pages/card/card.component';
 import { DepositComponent } from './pages/deposit/deposit.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
       { path: 'dashboard', component: DashboardComponent },
@@ -33,5 +35,6 @@ export const routes: Routes = [
     ]
   },
 
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '' }
 ];
