@@ -3,11 +3,12 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { FooterComponent } from "./components/template/footer/footer.component";
 import { UserSummaryComponent } from "./components/user-summary/user-summary.component";
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavComponent, FooterComponent, UserSummaryComponent, RouterModule],
+  imports: [NavComponent, FooterComponent, UserSummaryComponent, RouterModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
