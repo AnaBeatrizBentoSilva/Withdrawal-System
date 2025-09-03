@@ -1,14 +1,14 @@
 <div class="user-summary">
   <div>
     <p>
-      Olá, <strong>{{ userName }}</strong>
+      Olá, <strong>{{ fullName | capitalizeAll }}</strong>
     </p>
   </div>
   <div class="balance">
     <span>Saldo disponível:</span>
     <strong>
       <ng-container *ngIf="showSaldo; else oculto">
-      R$ {{ saldo | number : "1.2-2" }}
+      R$ {{ balance | number : "1.2-2" }}
     </ng-container>
     <ng-template #oculto>
       <span class="blurred-box"></span>

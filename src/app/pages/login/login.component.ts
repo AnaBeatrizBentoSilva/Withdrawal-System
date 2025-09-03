@@ -30,6 +30,7 @@ export class LoginComponent {
     this.api.login(this.username, this.password).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
+        localStorage.setItem('username', this.username);
         this.router.navigate(['/dashboard']);
         this.isLoading = false;
       },

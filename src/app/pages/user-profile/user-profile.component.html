@@ -4,25 +4,36 @@
     <div class="floating-label">
       <input
         type="text"
-        id="NameUser"
+        id="fullName"
         class="input"
-        [(ngModel)]="userProfile.nameUser"
-        name="nameUser"
+        [(ngModel)]="userProfile.fullName"
+        name="fullName"
         disabled
       />
-      <label [class.active]="userProfile.nameUser">Nome</label>
+      <label [class.active]="userProfile.fullName">Nome</label>
     </div>
     <div class="floating-label">
       <input
         type="text"
-        id="CPF/CNPJ"
+        id="CPF"
         class="input"
-        [(ngModel)]="userProfile.cpfCnpj"
-        name="cpfCnpj"
+        [(ngModel)]="userProfile.cpf"
+        name="cpf"
         disabled
-        mask="000.000.000-00||00.000.000/0000-00"
+        mask="000.000.000-00"
       />
-      <label [class.active]="userProfile.cpfCnpj">CPF/CNPJ</label>
+      <label [class.active]="userProfile.cpf">CPF</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="username"
+        class="input"
+        [(ngModel)]="userProfile.username"
+        name="username"
+        required
+      />
+      <label [class.active]="userProfile.username">Username</label>
     </div>
     <div class="floating-label">
       <input
@@ -47,13 +58,13 @@
         type="text"
         id="Phone"
         class="input"
-        [(ngModel)]="userProfile.phone"
+        [(ngModel)]="userProfile.phoneNumber"
         name="phone"
         required
         mask="(00) 00000-0000"
         #phone="ngModel"
       />
-      <label [class.active]="userProfile.phone">Telefone</label>
+      <label [class.active]="userProfile.phoneNumber">Telefone</label>
       <div *ngIf="phone.invalid && phone.touched" class="error-message">
         <span>*O telefone é obrigatório e precisa estar completo.</span>
       </div>

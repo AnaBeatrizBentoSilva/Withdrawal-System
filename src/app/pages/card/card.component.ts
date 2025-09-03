@@ -1,19 +1,48 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { UppercaseAllPipe } from "../../pipes/UppercaseAllPipe.pipe";
+import { ExpiryDatePipe } from "../../pipes/ExpiryDatePipe.pipe";
+import { CardNumberFormatPipe } from "../../pipes/CardNumberFormatPipe.pipe";
+import { AccountNumberFormatPipe } from "../../pipes/AccountNumberFormatPipe.pipe";
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [UppercaseAllPipe, ExpiryDatePipe, CardNumberFormatPipe, AccountNumberFormatPipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
-export class CardComponent {
+export class CardComponent implements OnInit{
   cardUser = {
-    nameUser: 'Ana B B Silva',
-    numberCard: '4698 2456 2356 2514',
-    agency: '2561',
-    account: '56178952 0',
-    code: '865',
-    validity: '07/30'
+    cardHolderName: '',
+    cardNumber: '',
+    agency: '',
+    accountNumber: '',
+    securityCode: '',
+    expiryDate: ''
   };
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    const username = localStorage.getItem('username');
+
+    if (!username) {
+      console.warn('Username não encontrado no localStorage!');
+      return;
+    }
+
+    this.apiService.getUserInfo(username).subscribe({
+      next: (data) => {
+        this.cardUser.cardHolderName = data.cardHolderName;
+        this.cardUser.cardNumber = data.cardNumber;
+        this.cardUser.agency = data.agency;
+        this.cardUser.accountNumber = data.accountNumber;
+        this.cardUser.securityCode = data.securityCode;
+        this.cardUser.expiryDate = data.expiryDate;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar informações do usuário:', err);
+      }
+    });
+  }
 }
