@@ -69,9 +69,50 @@ export class ApiService {
       );
   }
 
-  updateUserProfile(personId: string, update: { username: string, email: string, phoneNumber: string, address: string }) {
-    const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
-    return this.http.put(`${this.apiUrl}/people/${personId}`, update, { headers });
+  updateUserProfile(
+    personId: string,
+    update: {
+      username: string;
+      email: string;
+      phoneNumber: string;
+      address: string;
+    }
+  ) {
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    };
+    return this.http.put(`${this.apiUrl}/people/${personId}`, update, {
+      headers,
+    });
   }
 
+  // ================================
+  // OPERAÇÕES
+  // ================================
+
+  createDeposit(deposit: {
+    value: number;
+    description: string;
+    accountSourceId: string;
+  }) {
+    const accountSourceId =
+      deposit.accountSourceId || localStorage.getItem('accountId');
+    if (!accountSourceId) throw new Error('Conta de origem não encontrada');
+
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    };
+
+    return this.http.post(
+      `${this.apiUrl}/operations`,
+      {
+        typeOperation: 'DEPOSITO',
+        value: deposit.value,
+        description: deposit.description,
+        accountSourceId
+      },
+      { headers }
+    );
+  }
 }
