@@ -110,9 +110,53 @@ export class ApiService {
         typeOperation: 'DEPOSITO',
         value: deposit.value,
         description: deposit.description,
-        accountSourceId
+        accountSourceId,
       },
       { headers }
     );
+  }
+
+  createTransfer(transfer: {
+    value: number;
+    description: string;
+    accountSourceId: string;
+    beneficiaryAgency: string;
+    beneficiaryAccountNumber: string;
+  }): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('Usuário não autenticado.');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http
+      .post(
+        `${this.apiUrl}/operations`,
+        {
+          typeOperation: 'TRANSFERENCIA',
+          value: transfer.value,
+          description: transfer.description,
+          accountSourceId: transfer.accountSourceId,
+          beneficiaryAgency: transfer.beneficiaryAgency,
+          beneficiaryAccountNumber: transfer.beneficiaryAccountNumber,
+        },
+        { headers }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Erro ao realizar transferência:', error);
+          let message = error.error?.message || 'Erro ao realizar transferência';
+          if (!error.error?.message) {
+            if (error.status === 0) {
+              message = 'Não foi possível conectar ao servidor';
+            } else if (error.status >= 500) {
+              message = 'Erro no servidor. Tente novamente mais tarde';
+            }
+          }
+          return throwError(() => new Error(message));
+        })
+      );
   }
 }
