@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrintingComponent } from '../../components/printing/printing.component';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -23,6 +24,8 @@ export class WithdrawComponent {
   noteCounts: { [key: number]: number } = {};
   printing: boolean = false;
   showNotes: boolean = false;
+
+  constructor(private apiService: ApiService) {}
 
   // Getter para obter as chaves das notas (em número)
   get noteKeys(): number[] {
@@ -52,57 +55,39 @@ export class WithdrawComponent {
 
   // Método para processar o saque
   processWithdrawal() {
-    const isValid = this.validateWithdrawal();
-    if (!isValid) {
+    const amount = this.withdrawAmountNumber;
+    if (!amount || amount <= 0) {
+      this.errorMessage = 'Digite um valor válido para saque.';
+      return;
+    }
+
+    const accountId = localStorage.getItem('accountId');
+    if (!accountId) {
+      this.errorMessage = 'Conta não encontrada. Faça login novamente.';
       return;
     }
 
     this.printing = true;
     this.showNotes = false;
-
-    // Simula a impressão de 2 segundos
-    setTimeout(() => {
-      this.printing = false;
-      this.showNotes = true;
-    }, 2000);
-  }
-
-  // Método para validar o valor de saque
-  validateWithdrawal(): boolean {
     this.errorMessage = '';
-    this.noteCounts = {};
 
-    const notes = [50, 20, 10];
-    const minWithdrawal = 10;
-    const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinutes = now.getMinutes();
-    let maxWithdrawal = 10000;
-
-    // Ajusta o saque máximo à noite
-    if (
-      currentHour >= 22 ||
-      currentHour < 6 ||
-      (currentHour <= 6 && currentMinutes <= 0)
-    ) {
-      maxWithdrawal = 1000;
-    }
-
-    const amount = this.withdrawAmountNumber;
-
-    if (amount < minWithdrawal) {
-      this.errorMessage = '*O valor de saque mínimo é de R$ 10.';
-      return false;
-    } else if (amount % 10 !== 0) {
-      this.errorMessage = '*O valor do saque deve ser múltiplo de 10.';
-      return false;
-    } else if (amount > maxWithdrawal) {
-      this.errorMessage = `*O valor de saque máximo é de R$ ${maxWithdrawal}.`;
-      return false;
-    } else {
-      this.calculateNoteCounts(amount, notes);
-      return true;
-    }
+    this.apiService.createWithdraw({
+      value: amount,
+      description: 'Saque realizado',
+      accountSourceId: accountId
+    }).subscribe({
+      next: (res) => {
+        // Backend aprovou o saque
+        this.calculateNoteCounts(amount, [50, 20, 10]);
+        this.printing = false;
+        this.showNotes = true;
+      },
+      error: (err) => {
+        this.printing = false;
+        this.errorMessage = err.error?.message || 'Erro ao processar saque';
+        this.noteCounts = {}
+      }
+    });
   }
 
   // Método para calcular as notas
