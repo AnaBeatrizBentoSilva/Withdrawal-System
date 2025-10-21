@@ -186,4 +186,18 @@ export class ApiService {
       { headers }
     );
   }
+
+  getTransactionsByAccount(accountId: string) {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error('Usuário não autenticado.');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<any[]>(
+      `${this.apiUrl}/operations/account/${accountId}`,
+      { headers }
+    );
+  }
 }
