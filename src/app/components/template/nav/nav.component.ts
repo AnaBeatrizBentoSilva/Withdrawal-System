@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
@@ -11,5 +11,10 @@ import { MatListModule } from '@angular/material/list';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  constructor(private router: Router) {}
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

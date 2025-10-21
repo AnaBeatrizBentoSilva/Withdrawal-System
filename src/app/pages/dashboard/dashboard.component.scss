@@ -34,13 +34,12 @@
 
   .dashboard-container-summary {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
-    flex-wrap: wrap;
   }
 
   .card-statement {
-    flex: 2;
-    max-width: 100%;
+    width: 100%;
     border: 1px solid #ebeaea;
     padding: 2rem;
     border-radius: 8px;
@@ -59,9 +58,14 @@
   }
 
   .summary-cards {
-    flex: 1;
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    app-summary-product-card {
+      flex: 1;
+      min-width: 15rem;
+    }
   }
 }

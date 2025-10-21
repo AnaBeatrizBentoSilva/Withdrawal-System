@@ -19,37 +19,38 @@
     <div class="floating-label">
       <input
         type="text"
-        id="Beneficiário"
+        id="Agency"
         class="input"
-        [(ngModel)]="transfer.beneficiary"
-        name="beneficiario"
+        [(ngModel)]="transfer.beneficiaryAgency"
+        name="agency"
         required
+        mask="0000"
       />
-      <label [class.active]="transfer.beneficiary">Beneficiário</label>
+      <label [class.active]="transfer.beneficiaryAgency">Agência</label>
     </div>
-    <div class="floating-label">
-      <input
-        type="text"
-        id="CPF/CNPJ"
-        class="input"
-        [(ngModel)]="transfer.cpfCnpj"
-        name="cpfCnpj"
-        required
-        mask="000.000.000-00||00.000.000/0000-00"
-      />
-      <label [class.active]="transfer.cpfCnpj">CPF/CNPJ</label>
-    </div>
-    <div class="floating-label">
-      <input
-        type="text"
-        id="Banco"
-        class="input"
-        [(ngModel)]="transfer.bank"
-        name="banco"
-        required
-      />
 
-      <label [class.active]="transfer.bank">Banco</label>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="AccountNumber"
+        class="input"
+        [(ngModel)]="transfer.beneficiaryAccountNumber"
+        name="accountNumber"
+        required
+        mask="00000000 0"
+      />
+      <label [class.active]="transfer.beneficiaryAccountNumber">Número da Conta</label>
+    </div>
+    <div class="floating-label">
+      <input
+        type="text"
+        id="Description"
+        class="input"
+        [(ngModel)]="transfer.description"
+        name="description"
+        required
+      />
+      <label [class.active]="transfer.description">Descrição</label>
     </div>
     <button type="submit">Transferir</button>
   </form>
