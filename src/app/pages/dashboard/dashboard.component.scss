@@ -55,6 +55,15 @@
         color: red;
       }
     }
+
+    .no-transactions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      color: #666;
+      font-style: italic;
+    }
   }
 
   .summary-cards {

@@ -1,27 +1,28 @@
 @import "../../../styles/variables.scss";
 
-.login-container {
+.signup-container {
   display: flex;
-  height: 100vh;
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0;
+  padding: 100px ;
 
-  .login-card {
+  .signup-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 45rem;
+    height: auto;
     width: 32rem;
     background-color: $primary-color;
     border-radius: 0.9rem;
-    padding: 7rem 3rem;
+    padding: 4rem 3rem;
 
     img {
       width: 20rem;
+      margin-bottom: 3rem;
     }
 
-    .login-content {
+    .signup-content {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -32,7 +33,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 1.5rem;
+        gap: 1.2rem;
 
         button {
           background-color: #0b4da1;
@@ -43,27 +44,33 @@
           cursor: pointer;
           transition: opacity 0.3s;
           font-size: 1.2rem;
+          margin-top: 0.5rem;
 
           &:hover {
             opacity: 0.9;
           }
         }
       }
+      .error-message {
+        color: #ff4d4d;
+        font-size: 0.9rem;
+        margin-top: 0.4rem;
+        margin-bottom: 0.5rem;
+      }
     }
-    .login-footer {
+
+    .signup-footer {
       text-align: start;
       width: 100%;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       margin-left: 1rem;
       color: #e2e2e2;
 
       a {
         color: #fff;
-        text-decoration: none;
+        text-decoration: underline;
         font-weight: 400;
         transition: color 0.3s;
-        text-decoration: underline;
-        cursor: pointer;
 
         &:hover {
           color: #0b4da1;
