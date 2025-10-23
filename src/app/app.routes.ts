@@ -14,6 +14,7 @@ import { DepositComponent } from './pages/deposit/deposit.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { SignupComponent } from './pages/signup/signup.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +37,6 @@ export const routes: Routes = [
   },
 
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: '' }
 ];

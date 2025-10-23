@@ -18,6 +18,7 @@
     <mat-card class="card-statement">
       <mat-card-title>Últimas transações</mat-card-title>
       <table
+        *ngIf="latestTransactions.length > 0; else noTransactions"
         mat-table
         [dataSource]="latestTransactions"
         class="mat-elevation-z1"
@@ -55,6 +56,10 @@
           *matRowDef="let row; columns: ['type', 'date', 'value']"
         ></tr>
       </table>
+
+      <ng-template #noTransactions>
+        <p class="no-transactions">Nenhuma transação</p>
+      </ng-template>
     </mat-card>
 
     <div class="summary-cards">

@@ -4,19 +4,24 @@
   <p *ngIf="loading">Carregando...</p>
   <p *ngIf="errorMessage">{{ errorMessage }}</p>
 
-  <div class="transaction" *ngFor="let transaction of transactions">
-    <div class="info">
-      <p class="desc">{{ transaction.description }}</p>
-      <p class="date">{{ transaction.data | date : "dd/MM/yyyy" }}</p>
+  <ng-container *ngIf="transactions.length > 0; else noTransactions">
+    <div class="transaction" *ngFor="let transaction of transactions">
+      <div class="info">
+        <p class="desc">{{ transaction.description }}</p>
+        <p class="date">{{ transaction.data | date : "dd/MM/yyyy" }}</p>
+      </div>
+      <p
+        class="amount"
+        [ngClass]="{
+          positive: isPositive(transaction),
+          negative: isNegative(transaction)
+        }"
+      >
+        {{ formatValue(transaction) }}
+      </p>
     </div>
-    <p
-      class="amount"
-      [ngClass]="{
-        positive: isPositive(transaction),
-        negative: isNegative(transaction)
-      }"
-    >
-      {{ formatValue(transaction) }}
-    </p>
-  </div>
+  </ng-container>
+  <ng-template #noTransactions>
+    <p class="no-transactions">Nenhuma transação</p>
+  </ng-template>
 </section>

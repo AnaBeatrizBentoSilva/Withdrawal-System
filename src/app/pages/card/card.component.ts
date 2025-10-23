@@ -4,10 +4,11 @@ import { UppercaseAllPipe } from "../../pipes/UppercaseAllPipe.pipe";
 import { ExpiryDatePipe } from "../../pipes/ExpiryDatePipe.pipe";
 import { CardNumberFormatPipe } from "../../pipes/CardNumberFormatPipe.pipe";
 import { AccountNumberFormatPipe } from "../../pipes/AccountNumberFormatPipe.pipe";
+import { FirstLastNamePipe } from '../../pipes/FirstLastNamePipe.pipe';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [UppercaseAllPipe, ExpiryDatePipe, CardNumberFormatPipe, AccountNumberFormatPipe],
+  imports: [UppercaseAllPipe, ExpiryDatePipe, CardNumberFormatPipe, AccountNumberFormatPipe, FirstLastNamePipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })

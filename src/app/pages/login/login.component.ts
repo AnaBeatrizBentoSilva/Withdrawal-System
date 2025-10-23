@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FloatingInputComponent } from "../../components/inputs/floating-input/floating-input.component";
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FloatingInputComponent, FormsModule],
+  imports: [FloatingInputComponent, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

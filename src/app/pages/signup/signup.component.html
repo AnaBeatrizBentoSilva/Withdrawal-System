@@ -1,0 +1,91 @@
+<section class="signup-container">
+  <div class="signup-card">
+    <img src="assets/png/logo.png" alt="logo" />
+    <div class="signup-content">
+      <form (ngSubmit)="register()">
+        <app-floating-input
+          [(value)]="fullName"
+          name="fullName"
+          placeholder="Nome completo"
+          required
+        ></app-floating-input>
+
+        <app-floating-input
+          [(value)]="username"
+          name="username"
+          placeholder="Nome de usuário"
+          required
+        ></app-floating-input>
+        <div *ngIf="usernameError" class="error-message">
+          {{ usernameError }}
+        </div>
+
+        <app-floating-input
+          [(value)]="dateOfBirth"
+          name="dateOfBirth"
+          placeholder="Data de nascimento"
+          type="text"
+          mask="00/00/0000"
+          required
+        ></app-floating-input>
+        <div *ngIf="dateError" class="error-message">
+          {{ dateError }}
+        </div>
+
+        <app-floating-input
+          [(value)]="cpf"
+          name="cpf"
+          placeholder="CPF"
+          mask="000.000.000-00"
+          required
+        ></app-floating-input>
+        <div *ngIf="cpfError" class="error-message">
+          {{ cpfError }}
+        </div>
+
+        <app-floating-input
+          [(value)]="phoneNumber"
+          name="phoneNumber"
+          placeholder="Telefone"
+          mask="(00) 00000-0000"
+          required
+        ></app-floating-input>
+
+        <app-floating-input
+          [(value)]="address"
+          name="address"
+          placeholder="Endereço"
+          required
+        ></app-floating-input>
+
+        <app-floating-input
+          [(value)]="email"
+          name="email"
+          placeholder="E-mail"
+          type="email"
+          required
+        ></app-floating-input>
+        <div *ngIf="emailError" class="error-message">
+          {{ emailError }}
+        </div>
+
+        <app-floating-input
+          [(value)]="password"
+          name="password"
+          placeholder="Senha"
+          [type]="'password'"
+          required
+        ></app-floating-input>
+
+        <button type="submit" [disabled]="isLoading || !allFieldsFilled">
+          {{ isLoading ? "Cadastrando..." : "Cadastrar" }}
+        </button>
+      </form>
+
+      <div class="signup-footer">
+        <span>Já tem uma conta? </span>
+        <a routerLink="/login">Entrar</a>
+      </div>
+    </div>
+  </div>
+</section>
